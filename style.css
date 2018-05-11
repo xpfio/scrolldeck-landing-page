@@ -6,8 +6,8 @@ body, html{
 }
 
 .main {
-    padding: 0 30vh;
-    margin-top: 30vh;
+    padding: 0 30vw;
+    margin-top: 20vw;
 }
 
 h1, h2 {
@@ -37,7 +37,7 @@ h1, h2 {
 }
 
 .questions {
-    padding: 10vh;
+    padding: 10vw;
     position: relative;
     top: -200px;
 }
