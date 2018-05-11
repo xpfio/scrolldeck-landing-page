@@ -1,0 +1,103 @@
+body, html{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+}
+
+.main {
+    padding: 0 30vh;
+    margin-top: 30vh;
+}
+
+h1, h2 {
+    font-family: 'Montserrat';
+    text-align: center;
+    font-weight: normal;
+}
+
+.actionMain {
+    text-align: center;
+}
+
+.manualAction {
+    display: inline;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.keyboardAction{
+    display: inline;
+    margin: 10px;
+    font-size: 10px;
+}
+
+.questions {
+    padding: 10vh;
+    position: relative;
+    top: -200px;
+}
+
+.hidden {
+    display: none;
+}
+
+.questionWrapper {
+    padding: 0 10px;
+    position: relative;
+    border-width: 0px 0px 0 1px;
+    border-color: rgba(0,0,0,0.3);
+    border-style: dashed;
+    margin-bottom: 100px;
+}
+
+.questionNumber{
+    position: absolute;
+    top: 0;
+    left: -20px;
+    font-weight: bold;
+}
+
+input, textarea {
+    display: block;
+    color: #000000;
+    width: 100%;
+    resize: none;
+    background: none;
+    outline: none;
+    font-family: "Montserrat","Roboto",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 30px;
+    line-height: 40px;
+    border-color: rgba(0,0,0,0.3);
+    border-width: 0 0 1px 0px;
+}
+
+.action {
+    height: 28px;
+    margin-top: 20px;
+}
+
+.action .manualAction {
+    border-radius: 0;
+    margin-left: 0;
+}
+
+.grey {
+    opacity: 0.3;
+}
+
+svg {
+    cursor: pointer;
+}
+
+svg > text {
+    pointer-events: none;
+}

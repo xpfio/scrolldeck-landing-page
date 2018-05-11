@@ -1,0 +1,326 @@
+<html>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animate.css">
+    <body>
+        <div class="main" id="main">
+            <h1>ScrollDeck</h1>
+            <h2>Make your presentations better through data and visual storytelling.</h2>
+            <br/>
+            <div class="actionMain">
+                <span id="startButton" class="manualAction">Start</span>
+                <span class="keyboardAction" href="/">press ENTER</span>
+            </div>
+        </div>
+        <br>
+        <div class="questions hidden" id="questions">
+
+            <div class="questionWrapper" id="question-1">
+                <span class="questionNumber">1</span>
+                <div class="questionText">
+                    <p>What is your name?</p>
+                    <input type="text" id="nameInput"/>
+                </div>
+                <div class="action">
+                    <div class="manualAction">
+                        <span>Ok</span>
+                    </div>
+                    <span class="keyboardAction" href="/">press ENTER</span>
+                </div>
+            </div>
+
+            <div class="questionWrapper" id="question-2">
+                <span class="questionNumber">2</span>
+                <div class="questionText">
+                    <p>Hello <span id="nameUser"></span>!</p>
+                    <p>I'm the assistant who is going to get you started with your next awesome presentation.</p>
+                    <p>I will scaffold the structure according to your answers, and hope that the questions themselves will help you.</p>
+                    <p>How long will the presentation be?</p>
+                    <input type="text" id="duration"/>
+                </div>
+                <div class="action">
+                    <div class="manualAction">
+                        <span>Ok</span>
+                    </div>
+                    <span class="keyboardAction" href="/">press ENTER</span>
+                </div>
+            </div>
+
+            <div class="questionWrapper" id="question-3">
+                <span class="questionNumber">3</span>
+                <div class="questionText">
+                    <p>Great.</p>
+                    <p>I need some information about your <u>audience</u>, to provide feedback on your deck.</p>
+                    <p>How many people will attend your talk?</p>
+                    <input id="nbPeople" type="text" />
+                </div>
+                <div class="action">
+                    <div class="manualAction">
+                        <span>Ok</span>
+                    </div>
+                    <span class="keyboardAction" href="/">press ENTER</span>
+                </div>
+            </div>
+
+            <h2>Wow! That's <span id="timeSpent"></span> of human hours, that's a lot! Don't waste this time!</h2>
+            <br/>
+            <div class="questionWrapper" id="question-4">
+                <span class="questionNumber">4</span>
+                <div class="questionText">
+                    <p>What does the age distribution of your audience look like?</p>
+                    <svg id="audienceDistribution" width="400" height="200">
+                        <line x1=10 y1=180 x2=390 y2=180 stroke="grey"></line>
+                        <text x=10 y=190 style="font-size:10px;">0</text>
+                        <text x=390 y=190 text-anchor="end" style="font-size:10px;">100</text>
+                    </svg>
+                </div>
+                <div class="action">
+                    <div class="manualAction">
+                        <span>Ok</span>
+                    </div>
+                    <span class="keyboardAction" href="/">press ENTER</span>
+                </div>
+            </div>
+
+            <div class="questionWrapper" id="question-5">
+                <span class="questionNumber">5</span>
+                <div class="questionText">
+                    <p>What will the stage look like?</p>
+                    <input type="text" />
+                </div>
+                <div class="action">
+                    <div class="manualAction">
+                        <span>Ok</span>
+                    </div>
+                    <span class="keyboardAction" href="/">press ENTER</span>
+                </div>
+            </div>
+
+            <div class="questionWrapper" id="question-6">
+                <span class="questionNumber">6</span>
+                <div class="questionText">
+                    <p>Great. Now focus on the <u>content</u>.</p>
+                    <p>The next step will help you to define in a better manner what you want to achieve.</p>
+                    <p>In less than 200 words, what is the key messages you want your audience to get back home?</p>
+                    <!-- <input type="text" /> -->
+                    <textarea name="" id="" cols="30" rows="4"></textarea>
+                </div>
+                <div class="action">
+                    <div class="manualAction">
+                        <span>Ok</span>
+                    </div>
+                    <span class="keyboardAction" href="/">press ENTER</span>
+                </div>
+            </div>
+
+            <div class="questionWrapper" id="question-7">
+                <span class="questionNumber">7</span>
+                <div class="questionText">
+                    <p>Why should your audience care?</p>
+                    <input type="text" />
+                </div>
+                <div class="action">
+                    <div class="manualAction">
+                        <span>Ok</span>
+                    </div>
+                    <span class="keyboardAction" href="/">press ENTER</span>
+                </div>
+            </div>
+
+            <h1>Ready to go!</h1>
+            <div class="actionMain">
+                <span class="manualAction">GO</span>
+                <span>press ENTER</span>
+                <a href="app.html" style="opacity:0;" id="go">Go</a>
+            </div>
+
+        </div>
+
+    </body>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/d3/dist/d3.js"></script>
+    
+    <script>
+        var current_selection = 0;
+        var number_of_questions = 7;
+
+        document.addEventListener('wheel', function (event) {
+            if(current_selection > 0){
+                var scroll = $(window).scrollTop()
+
+                // Find closest question to scroll event
+                var minimum = Math.abs($('#question-1').offset().top - scroll - window.innerHeight/2);
+                // console.log($('#question-1').offset().top,scroll - window.innerHeight/2)
+                var target_question = 1;
+                for (var index = 1; index <= number_of_questions; index++) {
+                    var value = Math.abs($('#question-' + index).offset().top - scroll - window.innerHeight/2)
+                    if(value < minimum){
+                        minimum = value
+                        target_question = index;
+                    }
+                }
+                current_selection = target_question;
+                $('.questionWrapper').addClass('grey');
+                $('#question-' + current_selection).removeClass('grey');
+                $('#question-' + current_selection + ' > .questionText > textarea').focus();
+                $('#question-' + current_selection + ' > .questionText > input').focus();
+
+            }  
+        }, true /*Capture event*/);
+
+        $(document).keypress(function(e) {
+
+            if(e.which == 13){
+                if(current_selection == 0){
+                    current_selection += 1;
+                    $('#main').addClass('animated fadeOutUp');
+                    $('#questions').toggleClass('hidden');
+                    $('.questionWrapper').addClass('grey');
+                    $('#question-1').removeClass('grey');
+                    $('#question-1 > .questionText > input').focus();
+                }
+
+                else if(current_selection < number_of_questions){
+                    current_selection += 1;
+                    $('.questionWrapper').addClass('grey');
+                    $('#question-' + current_selection).removeClass('grey');
+                    $('#question-' + current_selection + ' > .questionText > textarea').focus();
+                    $('#question-' + current_selection + ' > .questionText > input').focus();
+                    $('html, body').animate({
+                        scrollTop: $('#question-' + current_selection).offset().top - window.innerHeight /2
+                    }, 300);
+                }
+
+                if(current_selection == 2){
+                    console.log($('#nameInput').val())
+                    $('#nameUser').text($('#nameInput').val())
+                }
+
+                if(current_selection == 4){
+                    $('#timeSpent').text( $('#nbPeople').val() +' x ' + $('#duration').val() )
+                }
+
+                if(current_selection == number_of_questions){
+                    $('.questionWrapper').addClass('grey');
+                    $('html, body').animate({
+                        scrollTop: $('#go').offset().top
+                    }, 300);
+                    $('#go').focus();
+                }
+            }
+        });
+
+        // $('#startButton').click(()=>{
+        //     $('#main').toggleClass('animated fadeOutUp');
+        // })
+        var press = jQuery.Event("keypress");
+        press.ctrlKey = false;
+        press.which = 13;
+
+        $(".manualAction").click(()=>$('body').trigger(press));
+
+
+
+
+</script>
+
+<script>
+    // Plot Gaussian distribution
+    var line = d3.line().x(d=>d.x).y(d=>d.y);
+    var bell_curve = t => 100*Math.exp(-Math.pow(t-200,2)/5000)
+    var data = [...Array(40000)].map((d,p)=>{
+        return {
+            x:p/100,
+            y:180-bell_curve(p/100)
+        }
+    })
+    data_original = data
+    console.log(data)
+        d3.select('#audienceDistribution')
+            .append("path")
+            .data([data])
+            .attr("class", "line")
+            .attr("d", line)
+            .attr('stroke','black');
+
+
+    var current_line = [];
+
+    // Drage Behavior
+    handleDragStart = () => {
+        d3.select('#audienceDistribution').selectAll('.line').remove();
+        data = [];
+    }
+    handleDrag = function() {
+        var point = d3.mouse(this);
+        data.push({x:point[0],y:point[1]})
+        d3.select('#audienceDistribution').selectAll('.line').remove();
+
+    d3.select('#audienceDistribution')
+        .append("path")
+        .data([data])
+        .attr("class", "line")
+        .attr("d", line)
+        .attr('stroke','black')
+        .attr('fill','none')
+        .style('stroke-width',4);
+
+    }
+    handleDragEnd = () => {
+        if(data.length == 0){
+            data = data_original;
+        }
+        else{
+        previous_point = 0;
+        minPoint = data[0];
+        maxPoint = data[0];
+        data.map(d=>{
+            if(d.x<minPoint.x){
+                minPoint = d
+            }
+            if(d.x>maxPoint.x){
+                maxPoint=d
+            }
+        })
+
+        data = [...Array(40000)].map((d,p)=>{
+            max = 180;
+            var x = p/40000*400;
+            var x_next = (p+1)/40000*400;
+            data.map(k=>{
+                if(k.x >= x && k.x < x_next && max > k.y){
+                    max = k.y;
+                    previous_point =k.y
+                }
+            })
+
+            return {
+                x: x,
+                y: d3.min([180,max])
+            }
+        })
+        data = data.filter(d=>d.y!=180)
+        minPoint.y = 180
+        maxPoint.y = 180
+        data.unshift(minPoint);
+        data.push(maxPoint);
+        console.log(minPoint,maxPoint);
+        }
+        d3.select('#audienceDistribution').selectAll('.line').remove();
+        d3.select('#audienceDistribution')
+            .append("path")
+            .data([data])
+            .attr("class", "line")
+            .attr("d", line)
+            .attr('stroke','black');
+    }
+
+    var drag = d3
+      .drag()
+      .on('start', handleDragStart)
+      .on('drag', handleDrag)
+      .on('end', handleDragEnd);
+    d3.select('#audienceDistribution').call(drag);
+
+</script>
+</html>
