@@ -1,1 +1,95 @@
-Under Construction
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="app.css">
+    </head>
+    <body>
+        <div class="center">
+        <div class="content">
+            <div class="wrapper">
+                <div class="title"><span>Your Content</span></div>
+
+                <!-- <textarea id="text" rows="1"></textarea> -->
+                <div class="textBlock">
+                <h1>Lorem Ipsum</h1>
+
+                <h2>Consectetur adipiscing</h2>
+                <p>Quisque sit amet condimentum mi. In accumsan est et iaculis lobortis. Quisque vel nulla dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque id risus vel arcu maximus pretium ut id nisl. Vestibulum mauris leo, mattis quis commodo ac, maximus id tellus. Praesent at felis accumsan velit volutpat mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur convallis ullamcorper augue, quis pellentesque tortor lobortis placerat. Praesent placerat luctus leo aliquet semper. Vestibulum ac odio rutrum, molestie turpis quis, mollis libero. Morbi eleifend, lacus commodo laoreet vehicula, libero sapien varius purus, ac dignissim justo lacus congue nisl. Ut et ligula et turpis varius fringilla.</p>
+
+                <p>Fusce ac dolor congue diam feugiat consectetur in nec est. Aliquam bibendum mauris purus, non dignissim enim faucibus non. Sed in tempus dolor. In rhoncus accumsan massa, in pretium massa volutpat id. In placerat sapien at lectus vehicula, a sodales diam posuere. Pellentesque bibendum sagittis tortor, nec aliquam nunc pellentesque eget. Donec elementum, ligula sit amet ullamcorper malesuada, velit quam aliquet eros, faucibus rutrum magna est eu purus. Praesent ultrices eros ac rhoncus venenatis.</p>
+
+                <p>Vestibulum quis enim non mauris lobortis accumsan. Donec euismod accumsan nulla a accumsan. In bibendum hendrerit varius. Pellentesque interdum eu odio a consectetur. Proin eleifend, quam vel fermentum fermentum, nunc lorem pretium ligula, sed tempor justo eros posuere urna. Praesent scelerisque gravida elit, ac viverra felis pellentesque ut. Integer ullamcorper tellus odio, sit amet suscipit est laoreet ac. Integer vel augue sed ante aliquam fermentum. Curabitur sollicitudin pharetra lectus, vitae semper neque elementum nec. Phasellus ac sodales turpis, molestie congue mi.</p>
+                </div>
+
+<video width="100%" loop mute autoplay>
+  <source src="intro.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+                <div class="textBlock">
+                <h1>Donec ut erat finibus</h1>
+
+                <h2>Consectetur adipiscing</h2>
+                <p>Venenatis lacus sit amet, interdum erat. Quisque bibendum lacus eget purus molestie, a sodales nisi sagittis. Quisque vulputate eget augue ac fermentum. Praesent volutpat quis nulla eu egestas. Etiam eget laoreet urna, non commodo enim. Vivamus nisl ipsum, euismod fringilla diam non, sodales hendrerit tellus. Duis auctor, risus ac feugiat efficitur, risus magna pharetra metus, vitae fringilla quam augue id felis. Aliquam molestie mi ut ex varius pellentesque. Maecenas imperdiet turpis nec tellus aliquet, sed varius augue fringilla. Morbi tristique tincidunt tempus. Praesent sem dui, tincidunt eget rutrum eget, pretium eu massa. Donec venenatis eleifend suscipit.</p>
+
+                <p>Aliquam erat volutpat. Nam finibus, ipsum nec dignissim blandit, diam metus tincidunt felis, eget cursus enim nisl nec enim. Etiam sed metus interdum, tempus erat eu, congue turpis. Nulla leo purus, ultricies eget dapibus fringilla, varius a arcu. Quisque et ipsum dolor. Mauris ac posuere massa. Aenean eget tempor lacus, sollicitudin dictum diam. Maecenas nisl ex, tincidunt eu viverra sit amet, venenatis eu turpis. Nullam a eros ac quam convallis consectetur.</p>
+
+                <h2>Vestibulum</h2>
+                <p>Vestibulum quis enim non mauris lobortis accumsan. Donec euismod accumsan nulla a accumsan. In bibendum hendrerit varius. Pellentesque interdum eu odio a consectetur. Proin eleifend, quam vel fermentum fermentum, nunc lorem pretium ligula, sed tempor justo eros posuere urna. Praesent scelerisque gravida elit, ac viverra felis pellentesque ut. Integer ullamcorper tellus odio, sit amet suscipit est laoreet ac. Integer vel augue sed ante aliquam fermentum. Curabitur sollicitudin pharetra lectus, vitae semper neque elementum nec. Phasellus ac sodales turpis, molestie congue mi.</p>
+                </div>
+
+<video width="100%" loop mute autoplay>
+  <source src="home1.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+            </div>
+        <!-- </div><div class="visual">
+            <div class="wrapper">
+                <div class="title-right"><span>Your Visual Aid</span></div>
+            </div>
+        </div> -->
+        <!-- <div class="timeline"></div> -->
+        </div>
+    </body>
+    <script>
+
+// $textBlock
+    
+var observe;
+if (window.attachEvent) {
+    observe = function (element, event, handler) {
+        element.attachEvent('on'+event, handler);
+    };
+}
+else {
+    observe = function (element, event, handler) {
+                console.log('AA')
+        element.addEventListener(event, handler, false);
+    };
+}
+function init () {
+    var text = document.getElementById('text');
+            console.log('AA')
+    function resize () {
+                console.log('AA')
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight+'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize () {
+        window.setTimeout(resize, 0);
+    }
+    observe(text, 'change',  resize);
+    observe(text, 'cut',     delayedResize);
+    observe(text, 'paste',   delayedResize);
+    observe(text, 'drop',    delayedResize);
+    observe(text, 'keydown', delayedResize);
+
+    text.focus();
+    text.select();
+    resize();
+}
+init();
+    </script>
+</html>
