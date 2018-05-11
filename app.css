@@ -5,6 +5,10 @@ body, html {
     background-color: rgba(0,0,0,0.05);
 }
 
+.globalWrapper{
+    min-width: 1366px;
+}
+
 .center {
     text-align: center;
     padding-top: 20px;
@@ -35,6 +39,15 @@ body, html {
     font-family: 'Montserrat';
 }
 
+.title-center {
+    padding: 10px;
+    background: black;
+    width: auto;
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat';
+}
+
 .title-right {
     position: absolute;
     right: 30px;
@@ -47,6 +60,7 @@ body, html {
 
 .textBlock {
     margin: 30px;
+    line-height: 28px;
 }
 
 input, textarea {
@@ -66,4 +80,38 @@ input, textarea {
     /* line-height: 40px; */
     border-color: rgba(0,0,0,0.3);
     border-width: 0 0 1px 0px;
+}
+
+.visual-aid {
+    position: absolute;
+    top: 0;
+    left: 839px;
+    width: 100%;
+}
+
+.personal-assistant {
+    position: absolute;
+    top: 0;
+    left: -172px;
+}
+
+.ai {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    left:-279px;
+    width: 220px;
+    background: white;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.presentation {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    left:839px;
+    width: 260px;
+    background: white;
+    color: white;
+    font-size: 14px;
+    padding: 0px;
 }
