@@ -1,1 +1,145 @@
-Under Construction
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="app.css">
+    </head>
+    <body>
+    <div class="globalWrapper">
+        <div class="center">
+        <div class="content">
+            <div class="wrapper">
+                <div class="title-center"><span>Your Content</span></div>
+
+<div class="visual-aid">
+    <div class="title"><span>Your Presentation</span></div>
+</div>
+
+<div class="personal-assistant">
+    <div class="title"><span>Your Assistant</span></div>
+</div>
+
+                <!-- <textarea id="text" rows="1"></textarea> -->
+                <div class="textBlock">
+                <h1>Climate Change Claims a Lake, and an Identity</h1>
+                <p>Text by NICHOLAS CASEY</p>
+                <p>Photographs and video by JOSH HANER</p>
+
+                <h2>The Lake Poopoó</h2>
+                </div>
+
+                <div class="ai">
+                    <p>Item suggested: Map of the area.</p>
+                    <p>Adding a map of the designed area <u>LLAPALLAPANI, Bolivia</u> might help your audience to get a better understanding of the area you are talking about.</p>
+                    <p>From <u>google.com</u>:</p>
+                    <img src="map.png" alt="" style="width:100%;">
+                </div>
+
+                <div class="textBlock">
+                <p><u>LLAPALLAPANI, Bolivia</u> — The water receded and the fish died. They surfaced by the tens of thousands, belly-up, and the stench drifted in the air for weeks.</p>
+
+<p>The birds that had fed on the fish had little choice but to abandon Lake Poopó, once Bolivia’s second-largest but now just a dry, salty expanse. Many of the Uru-Murato people, who had lived off its waters for generations, left as well, joining a new global march of refugees fleeing not war or persecution, but climate change.</p>
+
+<p>“The lake was our mother and our father,” said Adrián Quispe, one of five brothers who were working as fishermen and raising families here in Llapallapani. “Without this lake, where do we go?”</p>
+            </div>
+
+                            <div class="presentation">
+                    <p style="position:absolute; padding:40px;">Climate Change<br/>Claims a Lake,<br/>and an Identity</p>
+                    <video width="100%" loop mute autoplay>
+                    <source src="bolivia.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                    </video>
+                </div>
+
+<video width="100%" loop mute autoplay>
+  <source src="bolivia.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+
+                <div class="textBlock">
+
+                <p>After surviving decades of water diversion and cyclical El Niño droughts in the Andes, Lake Poopó basically disappeared in December. The ripple effects go beyond the loss of livelihood for the Quispes and hundreds of other fishing families, beyond the migration of people forced to leave homes that are no longer viable.</p>
+
+                <p>The vanishing of Lake Poopó threatens the very identity of the Uru-Murato people, the oldest indigenous group in the area. They adapted over generations to the conquests of the Inca and the Spanish, but seem unable to adjust to the abrupt upheaval climate change has caused.</p>
+
+                </div>
+                <div class="ai">
+                    <p>Item suggested: Evolution Graph</p>
+                    <p>You mention data, specific to a period: <u>2014</u> and <u>200 miles</u>, adding a table might catch your audience attention.</p>
+                </div>
+                <div class="textBlock">
+                <p>Only 636 Uru-Murato are estimated to remain in Llapallapani and two nearby villages. Since the fish died off in <u>2014</u>, scores have left to work in lead mines or salt flats up to <u>200 miles</u> away; those who stayed behind scrape by as farmers or otherwise survive on what used to be the shore.</p>
+                
+            </div>
+
+
+                <div class="presentation">
+                    <p style="position:absolute; padding:40px;">Emilio Huanaco</p>
+                    <p style="position:absolute; right:0; bottom:0; padding:10px;">+ 2 images</p>
+                     <img src="img1.jpg" style="width:100%; padding:0; margin:0"/>
+                </div>
+            
+                <div class="imgWrapper3">
+                    <img src="img1.jpg" style="width:33%; padding:0; margin:0"/>
+                    <img src="img2.jpg" style="width:33%; padding:0; margin:0"/>
+                    <img src="img3.jpg" style="width:33%; padding:0; margin:0"/>
+                </div>
+
+                <div class="textBlock">
+                <p>Emilio Huanaco, an indigenous judicial official, is down to his last bottles of flamingo fat, used for centuries to alleviate arthritis. He has never used medication for his aching knee.</p>
+                <p>Eva Choque, 33, sat next to her adobe home drying meat for the first time on a clothesline. She and her four children ate only fish before.</p>
+
+                </div>
+            </div>
+        <!-- </div><div class="visual">
+            <div class="wrapper">
+                <div class="title-right"><span>Your Visual Aid</span></div>
+            </div>
+        </div> -->
+        <!-- <div class="timeline"></div> -->
+        </div>
+        </div>
+    </div>  
+    </body>
+    <script>
+
+// $textBlock
+    
+var observe;
+if (window.attachEvent) {
+    observe = function (element, event, handler) {
+        element.attachEvent('on'+event, handler);
+    };
+}
+else {
+    observe = function (element, event, handler) {
+                console.log('AA')
+        element.addEventListener(event, handler, false);
+    };
+}
+function init () {
+    var text = document.getElementById('text');
+            console.log('AA')
+    function resize () {
+                console.log('AA')
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight+'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize () {
+        window.setTimeout(resize, 0);
+    }
+    observe(text, 'change',  resize);
+    observe(text, 'cut',     delayedResize);
+    observe(text, 'paste',   delayedResize);
+    observe(text, 'drop',    delayedResize);
+    observe(text, 'keydown', delayedResize);
+
+    text.focus();
+    text.select();
+    resize();
+}
+init();
+    </script>
+</html>
